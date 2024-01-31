@@ -28,9 +28,7 @@ defineProps({
                 >WEATHER ON DNISTER</Link>
                 <Link href="/nasa" class="link"
                       :class="{'font-bold text-blue-600': $page.component==='Shared/nasa'}"
-                >PHOTO STAR SKY FROM NASA</Link>
-
-
+                >DAY PHOTO FROM NASA</Link>
                 <Link href="/about" class="link"
                       :class="{'font-bold text-blue-600': $page.component==='About/About'}"
                 >ABOUT PROJECT</Link>

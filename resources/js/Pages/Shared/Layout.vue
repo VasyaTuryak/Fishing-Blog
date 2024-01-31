@@ -1,7 +1,5 @@
 <script setup>
 import Nav from "@/Pages/Shared/Nav.vue";
-import {computed} from "vue";
-
 
 </script>
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use Goutte\Client;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -77,10 +78,19 @@ Route::get('/nasa', function () {
     return Inertia::render('Shared/nasa');
 });
 
-Route::get('/lee', function () {
-    $head = [1,1,2];
-    $result=array_unique($head);
-    dd($result);
+Route::get('/leecode', function () {
+
+    $client = new Client();
+    $crawler = $client->request('GET', 'http://dnister.meteo.gov.ua/ua/hydro_operational_data');
+
+    // Extract data from the page
+    $title = $crawler->filter('title')->text();
+
+    // Do something with the extracted data
+    dd($crawler);
+
+
+
     return Inertia::render('Shared/nasa');
 });
 
