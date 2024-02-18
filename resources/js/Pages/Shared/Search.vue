@@ -9,7 +9,6 @@ import {Head} from "@inertiajs/vue3";
             <title>Search</title>
         </Head>
         <div class="flex justify-center">
-
             <form class="w-96">
                 <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div class="relative">
@@ -23,13 +22,11 @@ import {Head} from "@inertiajs/vue3";
                 </div>
             </form>
             <br>
-
         </div>
         <div class="grid justify-items-center">
             <div>
                 <p class="mr-auto">Search in title and body text, return where is more matches </p>
             </div>
-
         </div>
     </Layout>
 

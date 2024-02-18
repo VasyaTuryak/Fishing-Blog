@@ -6,10 +6,16 @@ import {Head} from "@inertiajs/vue3";
 
 export default {
     components: {Head, Layout},
+    props:{
+        levelOfWaterInRiver: String,
+        date: String
+    },
     data() {
         return {
             currentPosition: 'Puzhivka',
             currentLocationKey: 1208007,
+            dropDownList: 'Choose location for fishing:',
+            HTML:'Connect to <b>AccuWeather API</b> through AXIOS get weather condition',
             WeatherArray: '',
             fiveDays: 'http://dataservice.accuweather.com/forecasts/v1/daily/5day/1208007?apikey=NzqkfdM7AhwLN9El2voJ3R72O0kCnnbE&metric=true',
             points: {
@@ -26,7 +32,8 @@ export default {
     watch: {
         currentPosition() {
             this.changeLocation
-        }
+        },
+
     },
     computed: {
         changeLocation() {
@@ -69,6 +76,7 @@ export default {
         }
     }
 }
+
 </script>
 <template>
     <div>
@@ -78,14 +86,21 @@ export default {
             </Head>
             <div>
                 <div class="flex justify-center">
-                    <div class="flex flex-col">
-                        <p>Connect to <b>AccuWeather API</b> through AXIOS get weather condition.</p>
+                    <div class="flex flex-col ">
+                        <div v-if="levelOfWaterInRiver" class="border-2">
+                            <p>Level of water in Dnister near Zalischiki: {{levelOfWaterInRiver}} cm., data from {{date}}</p>
+                            <p>Parse data from site:</p>
+                            <a href="http://dnister.meteo.gov.ua/ua/hydro_operational_data" class="hover:text-blue-700">http://dnister.meteo.gov.ua/ua/hydro_operational_data</a>
+                        </div>
+
+                        <br>
+                        <p v-html="HTML"></p>
                         <br>
                     </div>
                 </div>
                 <div class="flex justify-center">
-                    <div class="flex flex-col">
-                        <p>Choose point for fishing:</p>
+                    <div class="flex flex-col mb-8">
+                        <p v-text="dropDownList"></p>
                         <br>
                         <select class="flex w-1/12flex-row justify-center" v-model="currentPosition"
                                 @click.prevent="newData">
@@ -94,35 +109,34 @@ export default {
                     </div>
                 </div>
                 <div class="flex flex-row justify-evenly ml-2 mr-2">
-                    <div v-for="x in WeatherArray">
+                    <div v-for="DayWeather in WeatherArray">
                         <div class="flex flex-col">
                             <br>
-
-                            <h1><b>Data: {{ x.Date.slice(0, 10) }}</b></h1>
-                            <p>Temperature maximum: {{ x.Temperature.Maximum.Value }}</p>
-                            <p>Temperature minimum: {{ x.Temperature.Minimum.Value }}</p>
+                            <h1><b>Data: {{ DayWeather.Date.slice(0, 10) }}</b></h1>
+                            <p>Temperature maximum: {{ DayWeather.Temperature.Maximum.Value }}</p>
+                            <p>Temperature minimum: {{ DayWeather.Temperature.Minimum.Value }}</p>
                             <br>
                             <p><b>Day</b></p>
-                            <p v-if="x.Day.HasPrecipitation">
-                                <p>Description: {{ x.Day.PrecipitationType }}</p>
-                                <p>Intensity: {{ x.Day.PrecipitationIntensity }}</p>
+                            <p v-if="DayWeather.Day.HasPrecipitation">
+                                <p>Description: {{ DayWeather.Day.PrecipitationType }}</p>
+                                <p>Intensity: {{ DayWeather.Day.PrecipitationIntensity }}</p>
                             </p>
                             <p v-else>
                                 <p>Without Precipitation. </p>
-                                <p>{{ x.Day.IconPhrase }}</p>
+                                <p>{{ DayWeather.Day.IconPhrase }}</p>
                             </p>
-                            <img :src="formNewUrl(x.Day.Icon )" alt="DayIcon" class="max-w-28">
+                            <img :src="formNewUrl(DayWeather.Day.Icon )" alt="DayIcon" class="max-w-28">
                             <br>
                             <p><b>Night</b></p>
-                            <p v-if="x.Night.HasPrecipitation">
-                                <p>Description: {{ x.Night.PrecipitationType }}</p>
-                                <p>Intensity: {{ x.Night.PrecipitationIntensity }}</p>
+                            <p v-if="DayWeather.Night.HasPrecipitation">
+                                <p>Description: {{ DayWeather.Night.PrecipitationType }}</p>
+                                <p>Intensity: {{ DayWeather.Night.PrecipitationIntensity }}</p>
                             </p>
                             <p v-else>
                                 <p>Without Precipitation. </p>
-                                <p>{{ x.Night.IconPhrase }}</p>
+                                <p>{{ DayWeather.Night.IconPhrase }}</p>
                             </p>
-                            <img :src="formNewUrl(x.Night.Icon )" alt="NightIcon" class="max-w-28">
+                            <img :src="formNewUrl(DayWeather.Night.Icon )" alt="NightIcon" class="max-w-28">
                             <br>
                         </div>
                     </div>

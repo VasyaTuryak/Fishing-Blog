@@ -1,5 +1,5 @@
 <script setup>
-import Nav from "@/Pages/Shared/Nav.vue";
+import Nav from "@/Pages/Shared/NavBar.vue";
 
 </script>
 
@@ -20,6 +20,10 @@ import Nav from "@/Pages/Shared/Nav.vue";
 
 </div>
     <slot />
+
+    <footer class=" bg-orange-500">
+        FOOTER
+    </footer>
 </template>
 
 <style scoped>

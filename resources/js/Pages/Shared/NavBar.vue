@@ -1,6 +1,5 @@
 <script setup>
 import {Link} from "@inertiajs/vue3";
-import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 
 defineProps({
     canLogin: {
@@ -16,22 +15,19 @@ defineProps({
     <nav >
         <div class="flex justify-between">
             <div>
-                <Link href="/home" class="link" :class="{'font-bold text-blue-600': $page.component==='Home'}">HOME</Link>
+                <Link href="/about" class="link"
+                      :class="{'font-bold text-blue-600': $page.component==='About/About'}"
+                >ABOUT PROJECT</Link>
                 <Link href="/latest" class="link"
                       :class="{'font-bold text-blue-600': $page.component==='Shared/latestpost'}"
-                >LATEST POST</Link>
-                <Link href="/search" class="link"
-                      :class="{'font-bold text-blue-600': $page.component==='Shared/Search'}"
-                >SEARCH FOR POST</Link>
+                >POSTs</Link>
+
                 <Link href="/weather" class="link"
                       :class="{'font-bold text-blue-600': $page.component==='Shared/Weather'}"
                 >WEATHER ON DNISTER</Link>
                 <Link href="/nasa" class="link"
                       :class="{'font-bold text-blue-600': $page.component==='Shared/nasa'}"
-                >DAY PHOTO FROM NASA</Link>
-                <Link href="/about" class="link"
-                      :class="{'font-bold text-blue-600': $page.component==='About/About'}"
-                >ABOUT PROJECT</Link>
+                >NASA's day photo</Link>
                 <Link href="/contact" class="link"
                       :class="{'font-bold text-blue-600': $page.component==='Contact/Contact'}"
                 >CONTACT</Link>
