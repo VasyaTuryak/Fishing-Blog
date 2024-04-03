@@ -9,6 +9,14 @@ import {Head} from "@inertiajs/vue3";
             <title>About</title>
         </Head>
         <div class="flex flex-col items-center">
+            <p>TASK: </p>
+            <p>Short description</p>
+            <p>Inspiration words</p>
+            <p>Few photos</p>
+            <p>history of fishing on Dnister</p>
+            <br>
+            <br>
+            <br>
             <p class="w-3/5 ">Embrace the tranquil rhythm of the water, where every ripple tells a story of patience and anticipation. Welcome to my fishing blog, a sanctuary for those who find solace in the gentle dance between the rod and the river. Here, we share not just the thrill of the catch but the journey of the soul.
 
                 In the world of angling, each cast is an invitation to connect with nature's secrets. It's not just about the fish; it's about the stillness of dawn, the symphony of birdsong, and the whisper of leaves in the breeze. It's a communion with the elements, a meditation that transcends the ordinary.

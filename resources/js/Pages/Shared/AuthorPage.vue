@@ -27,7 +27,7 @@ export default {
 <div class="flex flex-row">
     <NavBarAuthor class="w-1/5 ml-8"></NavBarAuthor>
     <div class="w-4/5 flex flex-row justify-center">
-        <Create :test="errors"></Create>
+        <Create class="ml-25" :test="errors"></Create>
     </div>
 </div>
 

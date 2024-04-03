@@ -25,9 +25,9 @@ export default {
             <title>Author Page</title>
         </Head>
         <div class="flex flex-row">
-            <NavBarAuthor class="w-1/5 sticky"></NavBarAuthor>
+            <NavBarAuthor class="w-1/5"></NavBarAuthor>
             <div class="w-4/5 flex flex-col items-center">
-                <Pagination class="fixed" :posts="userPosts"/>
+                <Pagination :posts="userPosts"/>
                 <Posts :test="userPosts" class="m-4"></Posts>
             </div>
         </div>

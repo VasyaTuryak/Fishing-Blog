@@ -1,15 +1,17 @@
 <?php
-//    $s = "()[]))";
+
+//       $s = "()[]()";
 //    $s = "()[]{}";
 //    $s = "(]";
 //    $s='[[[[';
 //    $s='[';
 //    $s='([][[[))';
 //    $s='([])';
-$s="()[]{}[";
+//    $s="()[]{}[]";
+$s='()';
 
-$NewArray = str_split($s);
-$length = count($NewArray);
+//    $NewArray = str_split($s);
+$length = strlen($s);
 $finish=null;
 $result='';
 $result1='';
@@ -20,23 +22,24 @@ $resultArray=[];
 
 if($length%2!==0){
     $result='odd';
-}elseif ($NewArray[0]===')' or $NewArray[0]===']' or $NewArray[0]==='}'){
+}elseif ($s[0]===')' or $s[0]===']' or $s[0]==='}'){
     $result='start from close';
-}elseif ($NewArray[$length-1]==='(' or $NewArray[$length-1]==='[' or $NewArray[$length-1]==='{'){
+}elseif ($s[$length-1]==='(' or $s[$length-1]==='[' or $s[$length-1]==='{'){
     $result='end from open';
 }else{
 
     //work with '[]'
 
-    $newArray1 = $NewArray;
+    $newArray1 = $s;
+
     for ($i = 0; $i < $length; $i++) {
         if ($newArray1[$i] !== '[' and $newArray1[$i] !== ']') {
-            unset($newArray1[$i]);
+            str_replace($newArray1[$i],'',$newArray1);
         }
     }
 
-    $newString=implode('',$newArray1);
-    $CutArray1= str_split($newString);
+//        $newString=implode('',$newArray1);
+    $CutArray1= str_split($newArray1);
 
     if(empty($CutArray1)){
         $result1='odd [';
@@ -58,15 +61,15 @@ if($length%2!==0){
 
     //work with '()'
 
-    $newArray2 = $NewArray;
+    $newArray2 = $s;
     for ($i = 0; $i < $length; $i++) {
         if ($newArray2[$i] !== '(' and $newArray2[$i] !== ')') {
-            unset($newArray2[$i]);
+            str_replace($newArray2[$i],'',$newArray2);
         }
     }
 
-    $newString=implode('',$newArray2);
-    $CutArray2= str_split($newString);
+//        $newString=implode('',$newArray2);
+    $CutArray2= str_split($newArray2);
 
     if(empty($CutArray2)){
         $result2='odd (';
@@ -88,15 +91,15 @@ if($length%2!==0){
 
     //work with '{ }'
 
-    $newArray3 = $NewArray;
+    $newArray3 = $s;
     for ($i = 0; $i < $length; $i++) {
         if ($newArray3[$i] !== '{' and $newArray3[$i] !== '}') {
-            unset($newArray3[$i]);
+            str_replace($newArray3[$i],'',$newArray3);
         }
     }
 
-    $newString=implode('',$newArray3);
-    $CutArray3= str_split($newString);
+//        $newString=implode('',$newArray3);
+    $CutArray3= str_split($newArray3);
 
     if(empty($CutArray3)){
         $result3='odd {';
@@ -135,12 +138,3 @@ if(empty($result) and empty($result1) and empty($result2) and empty($result3)){
 
 
 dd($finish);
-return $finish;
-
-//    dd($finish);
-//    dd($CutArray1);
-//    dd($resultArray);
-
-//    '(', ')', '{', '}', '[' and ']'
-
-

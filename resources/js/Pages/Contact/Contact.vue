@@ -16,7 +16,6 @@ import {Head} from "@inertiajs/vue3";
             <p>CONTACT PAGE</p>
         </div>
     </Layout>
-
 </template>
 
 <style scoped>
